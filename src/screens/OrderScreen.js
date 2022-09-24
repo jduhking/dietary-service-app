@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, Text, View}  from 'react-native';
+import FoodList from '../components/FoodList.js';
 
 export default function OrderScreen({ navigation })
 {
@@ -15,6 +16,8 @@ export default function OrderScreen({ navigation })
         title="Go to History Screen"
         onPress={() => navigation.navigate('History')}
         />
+        <FoodList/>
+        
         
     </View>
 
