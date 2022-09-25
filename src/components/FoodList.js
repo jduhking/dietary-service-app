@@ -1,11 +1,19 @@
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  FlatList,
+  StyleSheet,
+  Text,
+  Status,
+  Image,
+  SafeAreaView,
+} from "react-native";
 
-import React from 'react';
-import {View, FlatList, StyleSheet, Text, Status, Image, SafeAreaView} from 'react-native';
+import { Dimensions } from "react-native";
+import getMenu from "../interface/getMenu";
 
-import { Dimensions } from 'react-native';
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 
 
 const menuItems = {
@@ -392,9 +400,6 @@ const menuItems = {
   ],
 };
 
-
-
-  
 const FoodItem = ({ name }) => (
   <View style={styles.foodItem}>
     <Image style={styles.foodImage} 
@@ -404,29 +409,32 @@ const FoodItem = ({ name }) => (
   </View>
 );
 
-
-
-export default function FoodList(){
-
+export default function FoodList() {
+  const [menuData, setMenuData] = useState({})
+  useEffect(() => {
+    async function fetchMenu() {
+      const menu = await getMenu();
+      console.log(menu);
+      setMenuData(menu.m);
+    }
+    fetchMenu();
+  }, []);
 
   const renderItem = ({ item }) => {
-    return(<FoodItem name ={item.name} />)
+    return <FoodItem name={item.name} />;
   };
-  
-    return(
-      <SafeAreaView>
+
+  return (
+    <SafeAreaView>
        
      <FlatList
      numColumns={2}
-      data={menuItems.items}
-      renderItem={renderItem}
-      keyExtractor={item => item.name}
+        data={menuData}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.name}
       />
-      </SafeAreaView>
-    )
-          
-
-        
+    </SafeAreaView>
+  );
 }
 
 

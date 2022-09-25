@@ -5,6 +5,7 @@ module.exports = function (router) {
 };
 
 async function getMenu(req, res) {
+  console.log("get menu request for mrn: " + req.body.mrn)
   try {
     if (req.body.mrn == null) throw "No mrn on menu request";
 
