@@ -7,6 +7,7 @@ import { Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
+
 const menuItems = {
   items: [
     {
@@ -395,8 +396,11 @@ const menuItems = {
 
   
 const FoodItem = ({ name }) => (
-  <View >
-    <Text>{name}</Text>
+  <View style={styles.foodItem}>
+    <Image style={styles.foodImage} 
+      source={require('../screens/CateringTray.png')}
+    />
+    <Text style={styles.foodName}>{name}</Text>
   </View>
 );
 
@@ -411,7 +415,9 @@ export default function FoodList(){
   
     return(
       <SafeAreaView>
-      <FlatList
+       
+     <FlatList
+     numColumns={2}
       data={menuItems.items}
       renderItem={renderItem}
       keyExtractor={item => item.name}
@@ -425,19 +431,38 @@ export default function FoodList(){
 
 
   const styles = StyleSheet.create({
- 
-    item: {
+
+    foodItem: {
+      position: 'relative',
+      left: 20,
+      height: windowHeight * 0.2,
+      width: windowWidth * 0.4,
+      borderWidth: 1,
+      backgroundColor: '#ffb84e',
+      borderColor:'#ffb84e',
+      borderRadius: 20,
+      margin: windowHeight * 0.01,
+    },
+    foodName: {
+
+      fontSize: 16,
+      top: 20,
+      textAlign: 'center',
+
+
+    },
+      foodImage: {
+
         position: 'relative',
-        height: windowHeight * 0.08,
-        width: windowWidth * 0.92,
-        fontSize: 32,
+
+        height: 120,
+        width: 120,
+        top: 10,
+        left: 18, 
+        borderRadius: 130/2,
+        justifyContent: 'center',
+       
         borderWidth: 1,
-        backgroundColor: '#000000',
-        borderColor: '#000000',
-        margin: windowHeight * 0.01,
     },
-    name: {
-      fontSize: 32,
-      
-    },
+  
   });

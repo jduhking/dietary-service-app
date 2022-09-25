@@ -9,7 +9,6 @@ import { Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-console.log(windowWidth * 0.92 + " " + windowHeight * 0.08)
 
 export default function HomeScreen({ navigation })
 {
@@ -36,7 +35,7 @@ export default function HomeScreen({ navigation })
 
             source={require('./CateringTray.png')}
          />
-       
+   
         </View>
         <Text style={styles.roomService}>Room Service</Text>
     <View style = {styles.inputSection}>
@@ -60,6 +59,7 @@ export default function HomeScreen({ navigation })
         onPress={() => navigation.navigate('Order')}
         />
     </View>
+
     </View>
 
     )
