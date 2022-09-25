@@ -10,7 +10,8 @@ import {
   Pressable,
   FlatList,
 } from "react-native";
-import { orderItems, removeOrderItem } from "../state";
+import { orderItems } from "../state";
+import { useNavigation } from "@react-navigation/native";
 
 const BagItem = ({ item }) => {
   return (
@@ -22,9 +23,6 @@ const BagItem = ({ item }) => {
         />
         <Text style={styles.foodName}>{item.name}</Text>
         <Pressable
-          onPress={() => {
-            removeOrderItem();
-          }}
           style={styles.removeButton}
         >
           <Text style={styles.removeButtonText}>X</Text>
@@ -35,8 +33,9 @@ const BagItem = ({ item }) => {
   );
 };
 
-export default function BagScreen({ navigation }) {
+export default function BagScreen() {
   const order = orderItems.use();
+  const nav = useNavigation()
   const renderItem = ({ item }) => {
     return <BagItem item={item} />;
   };
@@ -45,13 +44,13 @@ export default function BagScreen({ navigation }) {
       <View style={styles.backButtonRow}>
         <Pressable
           style={styles.backButton}
-          onPress={() => navigation.goBack()}
+          onPress={() => nav.goBack()}
         >
           <Text style={styles.backButtonText}> {"<"} Back</Text>
         </Pressable>
         <View style={styles.bagHeader}>
           <Text style={styles.bagTitle}>Order Bag</Text>
-          <Pressable onPress={navigation.navigate("Confirm")} style={styles.orderButton}>
+          <Pressable onPress={()=>nav.navigate("Confirm")} style={styles.orderButton}>
             <Text style={styles.orderText}>Place Order</Text>
           </Pressable>
         </View>

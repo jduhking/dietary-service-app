@@ -1,14 +1,9 @@
 import React from "react";
 import {
-  Image,
   StyleSheet,
-  Button,
   Text,
   View,
-  TextInput,
-  SafeAreaView,
-  Pressable,
-  FlatList,
+
 } from "react-native";
 
 export default function OrderConfirm(){
