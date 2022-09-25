@@ -6,6 +6,7 @@ import {
   Text,
   Status,
   Image,
+  TextInput,
   SafeAreaView,
 } from "react-native";
 
@@ -414,7 +415,7 @@ export default function FoodList() {
   useEffect(() => {
     async function fetchMenu() {
       const menu = await getMenu();
-      console.log(menu);
+      
       setMenuData(menu.m);
     }
     fetchMenu();
@@ -426,7 +427,17 @@ export default function FoodList() {
 
   return (
     <SafeAreaView>
-       
+      <View style={styles.horizontalFlex}>
+       <View style={styles.searchFlex}>
+
+        <Image style={styles.magnify}
+        source={require('../../assets/search.png')} />
+        <TextInput
+        style={styles.searchBar}
+        >
+        </TextInput>
+        </View>
+       </View>
      <FlatList
      numColumns={2}
         data={menuData}
@@ -472,5 +483,36 @@ export default function FoodList() {
        
         borderWidth: 1,
     },
+    searchFlex: {
+      flex: 1,
+      flexDirection: 'row',
+
+    },
+    magnify:{
+   
+      resizeMode: 'stretch',
+      position: 'relative',
+      width: 50,
+      height:  50,
+    },
+    horizontalFlex: {
+      flexDirection: 'row',
+      flexWrap: 'nowrap',
+
+    },
+    searchBar: {
+
+      position: 'relative',
+      flex: 2, 
+      height: windowHeight * 0.04,
+      width: windowWidth * 0.8,
+      left: 2,
+      borderWidth: 1,
+      borderRadius: 60,
+      backgroundColor: '#ffffff',
+      borderColor: '#000000',
+      margin: windowHeight * 0.01,
+
+    }
   
   });
