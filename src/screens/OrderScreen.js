@@ -8,24 +8,8 @@ import { Dimensions } from "react-native";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-
-/*
-
- <Text >Order Screen</Text>
-        <Button
-        title="Go to Home Screen"
-        onPress={() => navigation.navigate('Home')}
-        />
-         <Button
-        title="Go to History Screen"
-        onPress={() => navigation.navigate('History')}
-        />
-    */
-
 export default function OrderScreen({ navigation })
 {
-
-   // const [mealPeriod, setMealPeriod] = useState("Breakfast");
 
     return(
     <View  styles={styles.container}> 
