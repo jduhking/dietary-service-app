@@ -23,6 +23,7 @@ async function getMenu(req, res) {
           patient.dietRestrictions.includes(restriction)
       );
       if(!restricted) restrictedMenu.push(item);
+      else console.log(item)
     }
     console.log(menu);
     console.log(restrictedMenu);
